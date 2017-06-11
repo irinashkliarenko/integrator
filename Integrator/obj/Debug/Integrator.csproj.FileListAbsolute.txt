@@ -1,0 +1,69 @@
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\bin\Debug\Integrator.exe.config
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\bin\Debug\Integrator.exe
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\bin\Debug\Integrator.pdb
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\obj\Debug\Integrator.csprojResolveAssemblyReference.cache
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\obj\Debug\Integrator.glowny.resources
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\obj\Debug\Integrator.Properties.Resources.resources
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\obj\Debug\Integrator.csproj.GenerateResource.Cache
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\obj\Debug\Integrator.exe
+c:\users\126652\documents\visual studio 2012\Projects\Integrator\Integrator\obj\Debug\Integrator.pdb
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\bin\Debug\Integrator.exe.config
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\bin\Debug\Integrator.exe
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\bin\Debug\Integrator.pdb
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.csprojResolveAssemblyReference.cache
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.glowny.resources
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.OProgramie.resources
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.Podglad.resources
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.Properties.Resources.resources
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.Ustawienia.resources
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.csproj.GenerateResource.Cache
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.exe
+C:\Users\126652\Desktop\Integrator-zajęcia\Integrator\obj\Debug\Integrator.pdb
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\bin\Debug\Integrator.exe.config
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.exe
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.pdb
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\bin\Debug\Integrator.exe
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\bin\Debug\Integrator.pdb
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.csprojResolveAssemblyReference.cache
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.glowny.resources
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.OProgramie.resources
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.Podglad.resources
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.Properties.Resources.resources
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.Ustawienia.resources
+C:\Users\126652\Desktop\dotNET\Integrator-zajęcia\Integrator\obj\Debug\Integrator.csproj.GenerateResource.Cache
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\bin\Debug\Integrator.exe.config
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.exe
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.pdb
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\bin\Debug\Integrator.exe
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\bin\Debug\Integrator.pdb
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.csprojResolveAssemblyReference.cache
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.glowny.resources
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.OProgramie.resources
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.Podglad.resources
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.Properties.Resources.resources
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.Ustawienia.resources
+C:\Users\126652\Desktop\Zajęcia PŁ\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.csproj.GenerateResource.Cache
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\bin\Debug\Integrator.exe.config
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\bin\Debug\Integrator.exe
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\bin\Debug\Integrator.pdb
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.csprojResolveAssemblyReference.cache
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.glowny.resources
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.OProgramie.resources
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.Podglad.resources
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.Properties.Resources.resources
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.Ustawienia.resources
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.csproj.GenerateResource.Cache
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.exe
+E:\POLIBUDA\6 sem\dotNET\Integrator-bazowy\Integrator\obj\Debug\Integrator.pdb
+C:\GIT\Integrator-bazowy\Integrator\bin\Debug\Integrator.exe.config
+C:\GIT\Integrator-bazowy\Integrator\bin\Debug\Integrator.exe
+C:\GIT\Integrator-bazowy\Integrator\bin\Debug\Integrator.pdb
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.csprojResolveAssemblyReference.cache
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.glowny.resources
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.OProgramie.resources
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.Podglad.resources
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.Properties.Resources.resources
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.Ustawienia.resources
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.csproj.GenerateResource.Cache
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.exe
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.pdb
