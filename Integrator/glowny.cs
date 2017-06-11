@@ -170,8 +170,6 @@ namespace Integrator
                     MessageBox.Show(ex.Message, "Błąd rozłączenia - cel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
         }
 
         private void bt_poglad_cel_Click(object sender, EventArgs e)
@@ -187,35 +185,6 @@ namespace Integrator
                 MessageBox.Show(ex.Message, "Błąd otwierania okna - Podlgądu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-
-        private void bt_integruj_Click(object sender, EventArgs e)
-        {
-            _zrodlo.DS_MsSQL("select * from _ADDRESS", "_Address");
-            _cel.DS_MsSQL("select * from _ADDRESS", "_Address");
-           
-            try
-            {
-                int min = 0;
-                int max = 100;
-                int zwieksz = 1;
-                int i = 1;
-
-                int sum_rows = 4;
-                
-                zwieksz = Convert.ToInt32(max / sum_rows);
-
-                while (i <= sum_rows)
-                {                    
-                    this.pb_integruj_Load(ref min, max, zwieksz, sum_rows, i);
-
-                    i++;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Błąd integracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void BazaDanychZrodloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,6 +224,37 @@ namespace Integrator
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Błąd otwierania okna - O programie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bt_integruj_Click(object sender, EventArgs e)
+        {
+            _zrodlo.DS_MsSQL("select * from _ADDRESS", "address_source");
+            _zrodlo.DS_MsSQL("select * from _USER", "user_source");
+            _cel.DS_MsSQL("select * from _ADDRESS", "address_target");
+            _cel.DS_MsSQL("select * from _USER", "user_target");
+
+            try
+            {
+                int min = 0;
+                int max = 100;
+                int zwieksz = 1;
+                int i = 1;
+
+                int sum_rows = 4;
+
+                zwieksz = Convert.ToInt32(max / sum_rows);
+
+                while (i <= sum_rows)
+                {
+                    this.pb_integruj_Load(ref min, max, zwieksz, sum_rows, i);
+
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Błąd integracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
