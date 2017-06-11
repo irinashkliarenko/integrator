@@ -57,25 +57,52 @@ namespace Integrator
 
         private void bt_polacz_zrodlo_Click(object sender, EventArgs e)
         {
-            try
-            {                
-                this._zrodlo.Connect_MsSQL(ustawienia.Default.zrodlo_host, ustawienia.Default.zrodlo_baza, ustawienia.Default.zrodlo_login, ustawienia.Default.zrodlo_haslo);
-
-                if (this._zrodlo.error_db != null)
-                {
-                    throw new Exception(this._zrodlo.error_db);
-                }
-                else
-                {
-                    this.bt_podglad_zrodlo.Enabled = true;
-                    if (this.bt_poglad_cel.Enabled == true) {
-                        this.bt_integruj.Enabled = true;
-                    }
-                }               
-            }
-            catch (Exception ex)
+            if (bt_polacz_zrodlo.Text == "Połącz")
             {
-                MessageBox.Show(ex.Message, "Błąd połączenia - źródło", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    this._zrodlo.Connect_MsSQL(ustawienia.Default.zrodlo_host, ustawienia.Default.zrodlo_baza, ustawienia.Default.zrodlo_login, ustawienia.Default.zrodlo_haslo);
+
+                    if (this._zrodlo.error_db != null)
+                    {
+                        throw new Exception(this._zrodlo.error_db);
+                    }
+                    else
+                    {
+                        this.bt_podglad_zrodlo.Enabled = true;
+                        if (this.bt_poglad_cel.Enabled == true)
+                        {
+                            this.bt_integruj.Enabled = true;
+                        }
+                    }
+                    bt_polacz_zrodlo.Text = "Rozłącz";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Błąd połączenia - źródło", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (bt_polacz_zrodlo.Text == "Rozłącz")
+            {
+                try
+                {
+                    this._zrodlo.Close_MsSQL();
+                    if (this._zrodlo.error_db != null)
+                    {
+                        throw new Exception(this._zrodlo.error_db);
+                    }
+                    else
+                    {
+                        this.bt_podglad_zrodlo.Enabled = false;
+                        this.bt_integruj.Enabled = false ;
+                        
+                        bt_polacz_zrodlo.Text = "Połącz";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Błąd rozłączenia - źródło", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -93,19 +120,80 @@ namespace Integrator
             }
         }
 
+        private void bt_polacz_cel_Click(object sender, EventArgs e)
+        {
+            if (bt_polacz_cel.Text == "Połącz")
+            {
+                try
+                {
+                    this._cel.Connect_MsSQL(ustawienia.Default.cel_host, ustawienia.Default.cel_baza, ustawienia.Default.cel_login, ustawienia.Default.cel_haslo);
+
+                    if (this._cel.error_db != null)
+                    {
+                        throw new Exception(this._cel.error_db);
+                    }
+                    else
+                    {
+                        this.bt_poglad_cel.Enabled = true;
+
+                        if (this.bt_podglad_zrodlo.Enabled == true)
+                        {
+                            this.bt_integruj.Enabled = true;
+                        }
+                        bt_polacz_cel.Text = "Rozłącz";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Błąd połączenia - cel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (bt_polacz_cel.Text == "Rozłącz")
+            {
+                try
+                {
+                    this._cel.Close_MsSQL();
+                    if (this._cel.error_db != null)
+                    {
+                        throw new Exception(this._cel.error_db);
+                    }
+                    else
+                    {
+                        this.bt_poglad_cel.Enabled = false;
+                        this.bt_integruj.Enabled = false;
+
+                        bt_polacz_cel.Text = "Połącz";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Błąd rozłączenia - cel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+        }
+
+        private void bt_poglad_cel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Podglad _okno = new Podglad();
+                _okno._polaczenie = this._cel;
+                _okno.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Błąd otwierania okna - Podlgądu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         private void bt_integruj_Click(object sender, EventArgs e)
         {
-            if (_zrodlo.isOpen_MsSQL() == true)
-            {
-                _zrodlo.DS_MsSQL("select * from _ADDRESS", "_Address");
-                System.Diagnostics.Debug.WriteLine("CONNECTION IS OPENED");
-            }
-            else {
-                System.Diagnostics.Debug.WriteLine("NO CONNECTION OPENED!!!!");
-            }
-            
-
-
+            _zrodlo.DS_MsSQL("select * from _ADDRESS", "_Address");
+            _cel.DS_MsSQL("select * from _ADDRESS", "_Address");
+           
             try
             {
                 int min = 0;
@@ -141,6 +229,20 @@ namespace Integrator
             {
                 MessageBox.Show(ex.Message, "Błąd otwierania okna - Ustawienia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void BazaDanychCelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Ustawienia _okno = new Ustawienia("cel");
+                _okno.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Błąd otwierania okna - Ustawienia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void OProgramieToolStripMenuItem_Click(object sender, EventArgs e)
@@ -185,59 +287,6 @@ namespace Integrator
             }
         }
 
-        private void BazaDanychCelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Ustawienia _okno = new Ustawienia("cel");
-                _okno.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Błąd otwierania okna - Ustawienia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void bt_polacz_cel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this._cel.Connect_MsSQL(ustawienia.Default.cel_host, ustawienia.Default.cel_baza, ustawienia.Default.cel_login, ustawienia.Default.cel_haslo);
-
-                if (this._cel.error_db != null)
-                {
-                    throw new Exception(this._cel.error_db);
-                }
-                else
-                {
-                    this.bt_poglad_cel.Enabled = true;
-
-                    if (this.bt_podglad_zrodlo.Enabled == true)
-                    {
-                        this.bt_integruj.Enabled = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Błąd połączenia - cel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void bt_poglad_cel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Podglad _okno = new Podglad();
-                _okno._polaczenie = this._cel;
-                _okno.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Błąd otwierania okna - Podlgądu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
+        
     }
 }

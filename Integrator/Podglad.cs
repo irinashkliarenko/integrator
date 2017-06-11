@@ -12,7 +12,9 @@ namespace Integrator
     {
         public Class_Data _polaczenie = null;
 
-        private DataTable tabela = null;
+        private DataTable tabela_miasto = null;
+
+        private DataTable tabela_uzytkownik = null;
 
         public Podglad()
         {
@@ -23,13 +25,15 @@ namespace Integrator
         {
             try
             {
-                this.Text = "Podlgąd bazy danych - źródło";
+                this.Text = "Podlgąd bazy danych";
                                
-                this.Miasto_Load();                    
+                this.Miasto_Load();
+
+                this.Uzytkownik_Load();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Błąd podglądu bazy daych - źródło", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Błąd podglądu bazy daych", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         
@@ -45,10 +49,33 @@ namespace Integrator
                 }
                 else
                 {
-                    tabela = new DataTable();
-                    tabela.Load(this._polaczenie.read_MsSQL);
-                    dgv_miasto.DataSource = tabela;                                  
+                    tabela_miasto = new DataTable();
+                    tabela_miasto.Load(this._polaczenie.read_MsSQL);
+                    dgv_miasto.DataSource = tabela_miasto;                                  
                 }            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Błąd ładowania danych - Miasto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Uzytkownik_Load()
+        {
+            try
+            {
+                this._polaczenie.Read_MsSQL("SELECT * FROM [_user]");
+
+                if (this._polaczenie.error_db != null)
+                {
+                    throw new Exception(this._polaczenie.error_db);
+                }
+                else
+                {
+                    tabela_uzytkownik = new DataTable();
+                    tabela_uzytkownik.Load(this._polaczenie.read_MsSQL);
+                    dgv_uzytkownik.DataSource = tabela_uzytkownik;
+                }
             }
             catch (Exception ex)
             {
