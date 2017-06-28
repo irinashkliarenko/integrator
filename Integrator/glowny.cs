@@ -227,13 +227,78 @@ namespace Integrator
             }
         }
 
+        public DataTable find_difference(DataTable dt1, DataTable dt2)
+        {
+            var differences =
+                dt1.AsEnumerable().Except(dt2.AsEnumerable(),
+                                                    DataRowComparer.Default);
+
+            return differences.Any() ? differences.CopyToDataTable() : new DataTable();
+        }
+
+
+        public void merge()
+        {
+            string query = null;
+            DataTable diff_address = find_difference(_zrodlo.ds_zrodlo_MsSQL.Tables[0], _cel.ds_cel_MsSQL.Tables[0]);
+            DataTable diff_user = find_difference(_zrodlo.ds_zrodlo_MsSQL.Tables[1], _cel.ds_cel_MsSQL.Tables[1]);
+
+            create_report(diff_address.Rows.Count, diff_user.Rows.Count);
+
+            for (int curRow = 0; curRow < diff_address.Rows.Count; curRow++)
+            {
+                query = "INSERT INTO _ADDRESS (COUNTRY, CITY) VALUES ('" + diff_address.Rows[curRow]["COUNTRY"].ToString().Trim()
+                    + "', '" + diff_address.Rows[curRow]["CITY"].ToString().Trim() + "');";
+                _cel.execute_sql_transaction(query);
+            }
+
+            for (int curRow = 0; curRow < diff_user.Rows.Count; curRow++)
+            {
+                query = "INSERT INTO _USER (NAME, SURNAME, AGE) VALUES ('" + diff_user.Rows[curRow]["NAME"].ToString().Trim()
+                    + "', '" + diff_user.Rows[curRow]["SURNAME"].ToString().Trim() + "', " + diff_user.Rows[curRow]["AGE"].ToString().Trim() + ");";
+                _cel.execute_sql_transaction(query);
+            }
+
+
+            //for (int curRow = 0; curRow < diff_address.Rows.Count; curRow++)
+            //{
+            //    for (int curCol = 0; curCol < diff_address.Columns.Count; curCol++)
+            //    {
+            //        System.Diagnostics.Debug.Write(diff_address.Rows[curRow][curCol].ToString().Trim() + "\t");
+            //    }
+            //    System.Diagnostics.Debug.WriteLine("");
+            //}
+
+            //for (int curRow = 0; curRow < diff_user.Rows.Count; curRow++)
+            //{
+            //    for (int curCol = 0; curCol < diff_user.Columns.Count; curCol++)
+            //    {
+            //        System.Diagnostics.Debug.Write(diff_user.Rows[curRow][curCol].ToString().Trim() + "\t");
+            //    }
+            //    System.Diagnostics.Debug.WriteLine("");
+            //}
+        }
+
+        public void create_report(int copied_data1, int copied_data2)
+        {
+            MoreInfo report = new MoreInfo();
+            int non_copied_data1 = _zrodlo.ds_zrodlo_MsSQL.Tables[0].Rows.Count - copied_data1;
+            int non_copied_data2 = _zrodlo.ds_zrodlo_MsSQL.Tables[1].Rows.Count - copied_data2;
+
+            report.setData1("ADDRESS", _zrodlo.ds_zrodlo_MsSQL.Tables[0].Rows.Count.ToString(), copied_data1.ToString(), non_copied_data1.ToString());
+            report.setData2("USER", _zrodlo.ds_zrodlo_MsSQL.Tables[1].Rows.Count.ToString(), copied_data2.ToString(), non_copied_data2.ToString());
+            report.Show();
+        }
+
         private void bt_integruj_Click(object sender, EventArgs e)
         {
-            _zrodlo.DS_MsSQL("select * from _ADDRESS", "address_source");
-            _zrodlo.DS_MsSQL("select * from _USER", "user_source");
-            _cel.DS_MsSQL("select * from _ADDRESS", "address_target");
-            _cel.DS_MsSQL("select * from _USER", "user_target");
-
+            _zrodlo.DS_zrodlo_MsSQL("select * from _ADDRESS", "address_source");
+            _zrodlo.DS_zrodlo_MsSQL("select * from _USER", "user_source");
+            _cel.DS_cel_MsSQL("select * from _ADDRESS", "address_target");
+            _cel.DS_cel_MsSQL("select * from _USER", "user_target");
+            merge();
+            
+            
             try
             {
                 int min = 0;

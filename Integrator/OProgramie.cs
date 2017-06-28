@@ -19,9 +19,9 @@ namespace Integrator
             try
             {
                 l_przedmiot.Text = "Platforma .NET";
-                l_autor.Text = "Adrian Królik";
-                l_indeks.Text = "123456";
-                l_rok.Text = "2015/2016";
+                l_autor.Text = "Iryna Shkliarenko";
+                l_indeks.Text = "198039";
+                l_rok.Text = "2016/2017";
             }
             catch (Exception ex)
             {

@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class_Data.cs" />
+    <Compile Include="MoreInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoreInfo.Designer.cs">
+      <DependentUpon>MoreInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="glowny.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="Ustawienia.Designer.cs">
       <DependentUpon>Ustawienia.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MoreInfo.resx">
+      <DependentUpon>MoreInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="glowny.resx">
       <DependentUpon>glowny.cs</DependentUpon>
     </EmbeddedResource>

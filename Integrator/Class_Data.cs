@@ -14,7 +14,8 @@ namespace Integrator
         private SqlCommand comd_MsSQL = null;
         public SqlDataReader read_MsSQL = null;
         private SqlDataAdapter adap_MsSQL = null;
-        public DataSet ds_MsSQL = new DataSet();
+        public DataSet ds_zrodlo_MsSQL = new DataSet();
+        public DataSet ds_cel_MsSQL = new DataSet();
         public string error_db = null;
 
         public void Connect_MsSQL(string server, string dbname, string login, string pass)
@@ -81,26 +82,68 @@ namespace Integrator
             }
         }
 
-        public void DS_MsSQL(string query, string tabname)
+        public void DS_zrodlo_MsSQL(string query, string tabname)
         {
             error_db = null;
 
             try
             {
-                if (ds_MsSQL.Tables.IndexOf(tabname) != -1)
+                if (ds_zrodlo_MsSQL.Tables.IndexOf(tabname) != -1)
                 {
-                    ds_MsSQL.Tables.Remove(tabname);
+                    ds_zrodlo_MsSQL.Tables.Remove(tabname);
                 }
 
                 comd_MsSQL = new SqlCommand(query, conn_MsSQL);
                 adap_MsSQL = new SqlDataAdapter(comd_MsSQL.CommandText, conn_MsSQL);
-                adap_MsSQL.Fill(ds_MsSQL, tabname);
+                adap_MsSQL.Fill(ds_zrodlo_MsSQL, tabname);
                 adap_MsSQL.Dispose();
             }
             catch (SqlException ex)
             {
                 error_db = ex.Message;
             }
+        }
+
+        public void DS_cel_MsSQL(string query, string tabname)
+        {
+            error_db = null;
+
+            try
+            {
+                if (ds_cel_MsSQL.Tables.IndexOf(tabname) != -1)
+                {
+                    ds_cel_MsSQL.Tables.Remove(tabname);
+                }
+
+                comd_MsSQL = new SqlCommand(query, conn_MsSQL);
+                adap_MsSQL = new SqlDataAdapter(comd_MsSQL.CommandText, conn_MsSQL);
+                adap_MsSQL.Fill(ds_cel_MsSQL, tabname);
+                adap_MsSQL.Dispose();
+            }
+            catch (SqlException ex)
+            {
+                error_db = ex.Message;
+            }
+        }
+
+        static void PrintDataSet(DataSet ds)
+        {
+            foreach (DataTable dt in ds.Tables)
+            {
+                for (int curCol = 0; curCol < dt.Columns.Count; curCol++)
+                {
+                    System.Diagnostics.Debug.Write(dt.Columns[curCol].ColumnName.Trim() + "\t");
+                }
+                for (int curRow = 0; curRow < dt.Rows.Count; curRow++)
+                {
+                    for (int curCol = 0; curCol < dt.Columns.Count; curCol++)
+                    {
+                        System.Diagnostics.Debug.Write(dt.Rows[curRow][curCol].ToString().Trim() + "\t");
+                    }
+                    System.Diagnostics.Debug.WriteLine("");
+                }
+            }
+
         }
 
         public void Read_MsSQL(string query)
@@ -168,5 +211,40 @@ namespace Integrator
 
             return id;
         }
+
+        public void execute_sql_transaction(string query)
+        {
+            SqlCommand command = conn_MsSQL.CreateCommand();
+            SqlTransaction transaction;
+            transaction = conn_MsSQL.BeginTransaction("Transaction");
+
+            command.Connection = conn_MsSQL;
+            command.Transaction = transaction;
+
+            try
+            {
+                command.CommandText = query;
+                command.ExecuteNonQuery();
+                
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                Console.WriteLine("  Message: {0}", ex.Message);
+                
+                try
+                {
+                    transaction.Rollback();
+                }
+                catch (Exception ex2)
+                {
+                    Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                    Console.WriteLine("  Message: {0}", ex2.Message);
+                }
+            }
+
+        }
+
     }
 }

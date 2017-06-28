@@ -67,3 +67,4 @@ C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.Ustawienia.resources
 C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.csproj.GenerateResource.Cache
 C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.exe
 C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.pdb
+C:\GIT\Integrator-bazowy\Integrator\obj\Debug\Integrator.MoreInfo.resources
